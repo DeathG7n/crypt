@@ -260,9 +260,31 @@ export function Faq(){
       </div>
       <div>
         <div>
-          <p>How can I secure my wallet?</p>
-          <span>Set a unique passcode for your wallet.
-          Also, make sure the numbers are random. Birthdays, anniversaries, house addresses, and the last digits of your phone number are all popular combinations and are crackable codes to a resourceful criminal.</span>
+          <p className={styles.questions}>How can I secure my wallet?</p>
+          <span className={styles.answers}>
+            <p>Set a unique passcode for your wallet.</p>
+            <p>Also, make sure the numbers are random. Birthdays, anniversaries, house addresses, and the last digits of your phone number are all popular combinations and are crackable codes to a resourceful criminal.</p>
+          </span>
+        </div>
+        <div>
+          <p className={styles.questions}>How to backup a crypto wallet?</p>
+          <span className={styles.answers}>
+            <p>1. Export Private Keys/Seed Phrase: Go to your wallet's settings and select the “backup wallet” or “export keys” option.</p>
+            <p>2. Secure Your Backup: Store backups in multiple secure locations like USB drives, paper copies in fireproof safes, and safety deposit boxes.</p>
+          </span>
+        </div>
+        <div>
+          <p className={styles.questions}>How to keep bitcoin wallet safe?</p>
+          <span className={styles.answers}>
+            <p>Securing Your Bitcoin: Choosing a Reputable Exchange.</p>
+          </span>
+        </div>
+        <div>
+          <p className={styles.questions}>How do I trust a safe wallet?</p>
+          <span className={styles.answers}>
+            <p>Back up your wallet.</p>
+            <p>Be cautious of phishing scams.</p>
+          </span>
         </div>
       </div>
     </section>
@@ -271,22 +293,102 @@ export function Faq(){
 
 export function Trust(){
   return (
-    <section className={styles.hero}>
+    <section className={styles.trust}>
+      <h1>Trusted By</h1>
+      <div>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div>
+        <ul>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
     </section>
   )
 }
 
 export function Newsletter(){
   return (
-    <section className={styles.hero}>
+    <section className={styles.news}>
+      <div>
+        <div>
+          <h1>Quick Links</h1>
+        </div>
+        <div>
+          <ul>
+            <li>IGO</li>
+            <li>LAUNCHPAD</li>
+            <li>STAKING</li>
+            <li>FARMING</li>
+            <li>CRYPTO</li>
+          </ul>
+          <ul>
+            <li>DEFI</li>
+            <li>WEB3</li>
+            <li>IEO</li>
+            <li>IDO</li>
+            <li>TOKEN</li>
+            <li>GAMING</li>
+            <li>NFT</li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h1>Newsletter</h1>
+        <p>Welcome to Cryptnetworkweb3 your gateway to the world of Web3 trading! Our user-friendly platform</p>
+        <span>
+          <input type="email" />
+          <button>?</button>
+        </span>
+      </div>
     </section>
   )
 }
 
 export function Footer(){
   return (
-    <section className={styles.hero}>
+    <section className={styles.footer}>
+      <div>Copyright @ 2025 Cryptnetworkweb3</div>
     </section>
   )
 }
 
+export function Popup(){
+  return (
+    <section className={styles.popup}>
+      <div>
+        <div>
+          <h1>Connect Wallet</h1>
+          <p>Gateway to Web3</p>
+        </div>
+        <div>X</div>
+      </div>
+      <div>Backup Wallet</div>
+      <div>
+        <Image/>
+        <h1>Automatic/Manual Backup</h1>
+        <button>Continue</button>
+      </div>
+    </section>
+  )
+}
