@@ -4,12 +4,9 @@
 
 "use client"
 import styles from "./page.module.css"
-import logo from "../../public/logo-hopkins.jpg"
-// import Navbar from "@/components/Navbar"
 import { useState, useRef } from "react"
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
-import Popup from "@/components/popup/Popup"
 
 export default function Page() {
   const [popup, setPopup] = useState(false)
