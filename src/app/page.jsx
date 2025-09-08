@@ -1,44 +1,23 @@
 "use client"
 import styles from "./page.module.css"
 import logo from "../../public/logo-hopkins.jpg"
-// import Navbar from "@/components/Navbar"
 import { useState, useRef } from "react"
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
-import Popup from "@/components/popup/Popup"
 
 export default function Page() {
-  const [popup, setPopup] = useState(false)
-  const users = [
-    {
-      name: "Jared",
-      password: "admin",
-      admin: true
-    },
-    {
-      name: "Staff",
-      password: "staff",
-      admin: false
-    }
-  ]
-  const name = useRef()
-  const password = useRef()
-  const router = useRouter();
-  const handleClick = () =>{
-    const currentUser = users?.find(i => i?.name == name?.current?.value)
-    if(currentUser && currentUser?.password == password?.current?.value){
-      localStorage.setItem("admin", currentUser?.admin)
-      router.push("/find-patient")
-    } else{
-      setPopup(true)
-      setTimeout(()=> setPopup(false), 2000)
-    }
-  }
   return (
     <div className={styles.page}>
       <Navbar/>
       <Hero/>
-      {popup && <Popup message={"Login Incorrect"} error={false}/>}
+      <Secure/>
+      <Explore/>
+      <Start/>
+      {/* <Recovery/>
+      <Faq/>
+      <Trust/>
+      <Newsletter/>
+      <Footer/> */}
     </div>
   )
 }
@@ -68,61 +47,126 @@ export function Hero(){
   return (
     <section className={styles.hero}>
       <div className={styles.main}>
+        <div className={styles.circle}></div>
         <h1>Gateway to Encrypt, back up, and <span>secure your assets</span></h1>
         <p>The easiest, safest, and fastest way to secure & back up crypto asset.</p>
         <div className={styles.btns}>
           <button className={styles.connect}>Connect Wallet</button>
           <button className={styles.explore}>Explore Now</button>
         </div>
+        <Image
+          src="/Home Page/bitcoin-2.png"
+          alt="Coin Logo"
+          className={styles.bitcoin}
+          width={100}
+          height={24}
+          priority
+        />
       </div>
       <div className={styles.imgBox}>
+        <div className={styles.circle1}></div>
         <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
+          src="/Home Page/Web3.png"
+          alt="Web3 Logo"
+          className={styles.web3}
+          width={500}
+          height={26}
+          priority
+        />
+        <Image
+          src="/Home Page/globe.png"
+          alt="Globe Logo"
+          className={styles.globe}
+          width={100}
+          height={24}
+          priority
+        />
+        <Image
+          src="/Home Page/bitcoin-2.png"
+          alt="Coin Logo"
+          className={styles.tether}
+          width={90}
+          height={24}
+          priority
+        />
       </div>
+      <div className={styles.circle2}></div>
+      <div className={styles.circle3}></div>
+      <div className={styles.circle4}></div>
       <div className={styles.stats}>
-        <div>200+ Countries Covered</div>
-        <div>30 Million Global Investors</div>
-        <div>700+ Secured Wallet</div>
-        <div>$1.36 Billion Secured Volume</div>
+        <div>
+          <h1>200+</h1>
+          <p>Countries Covered</p> 
+        </div>
+        <div>
+          <h1>30 Million</h1>
+          <p>Global Investors</p> 
+        </div>
+        <div>
+          <h1>700+</h1>
+          <p>Secured Wallet</p> 
+        </div>
+        <div className={styles.country}>
+          <h1>$1.36 Billion+</h1>
+          <p>Secured Volume</p> 
+        </div>
       </div>
     </section>
   )
 }
 
 export function Secure(){
+  const offers = [
+    {
+      head: "Connect to Dapps",
+      text: "Connect decentralized apps to mobile wallets and enable DAPP.",
+      img: "/Home Page/globe-2.png"
+    },
+    {
+      head: "Missing Funds",
+      text: "Lost access to funds or missing funds? Click here.",
+      img: "/Home Page/trade.png"
+    },
+    {
+      head: "High Fee",
+      text: "Transaction fees too high? Click here.",
+      img: "/Home Page/spot.png"
+    },
+    {
+      head: "24/7 Support",
+      text: "Count on us for round-the-clock support, help whenever you need it.",
+      img: "/Home Page/support.png"
+    },
+    {
+      head: "Trusted & Secure",
+      text: "Your assets2. On your terms. At your fingertips.",
+      img: "/Home Page/trusted.png",
+      class: true
+    },
+  ]
   return (
     <section className={styles.secure}>
-      <div>
-        <div>Find & Secure crypto Now!</div>
-        <div>Our comprehensive cybersecurity platform, driven by artificial intelligence, not only safeguards your organization.</div>
+      <div className={styles.find}>
+        <h1 className={styles.head}>Find & Secure crypto Now!</h1>
+        <p>Our comprehensive cybersecurity platform, driven by artificial intelligence, not only safeguards your organization.</p>
       </div>
-      <div>
-        <div>
-          <h3>Connect to Dapps</h3>
-          <p>Connect decentralized apps to mobile wallets and enable DAPP.</p>
-        </div>
-        <div>
-          <h3>Missing Funds</h3>
-          <p>Lost access to funds or missing funds? Click here.</p>
-        </div>
-        <div>
-          <h3>High Fee</h3>
-          <p>Transaction fees too high? Click here.</p>
-        </div>
-        <div>
-          <h3>24/7 Support</h3>
-          <p>Count on us for round-the-clock support, help whenever you need it.</p>
-        </div>
-        <div>
-          <h3>Trusted & Secure</h3>
-          <p>Your assets2. On your terms. At your fingertips.</p>
-        </div>
+      <div className={styles.offers}>
+        {offers.map((offer,i)=>{
+            return(
+              <div key={i}>
+                <h1 className={styles.head2}>{offer.head}</h1>
+                <p>{offer.text}</p>
+                <Image
+                  src={offer.img}
+                  alt="Coin Logo"
+                  className={offer.class ? styles.logo : ""}
+                  width={300}
+                  height={250}
+                  priority
+                />
+              </div>
+            )
+        })}
       </div>
     </section>
   )
@@ -130,56 +174,113 @@ export function Secure(){
 
 export function Explore(){
   return (
-    <section className={styles.explore}>
-      <div>
-        <div>
-          <div>Explore Web3</div>
-          <div>It is the easiest, safest, and fastest way to secure & backup crypto asset.</div>
+    <section className={styles.explore2}>
+      <div className={styles.web}>
+        <div className={styles.webbox}>
+          <h1 className={styles.head}>Explore Web3</h1>
+          <p>It is the easiest, safest, and fastest way to secure & backup crypto asset.</p>
         </div>
         <button>View More</button>
       </div>
-      <div>
+      <div className={styles.scroller}>
         <div>
-          <div></div>
-          <h2>Spot Trading</h2>
-          <p>Trade crypto with our comprehensive set of powerful tools to maximize your profits.</p>
+          <span>
+            <Image
+              src="/icons/spot-trading.png"
+              alt="Coin Logo"
+              className={styles.icon}
+              width={50}
+              height={50}
+              priority
+            />
+          </span>
+          <h2 className={styles.head3}>Spot Trading</h2>
+          <p>Trade crypto with our</p>
+          <p>comprehensive set of powerful tools to maximize your profits.</p>
           <span>View Details</span>
         </div>
         <div>
-          <div></div>
+          <span>
+            <Image
+              src="/icons/margin.png"
+              alt="Coin Logo"
+              className={styles.icon}
+              width={50}
+              height={50}
+              priority
+            />
+          </span>
           <h2>Margin Trading</h2>
-          <p>Borrow, trade, and repay. Leverage your assets2 with margin trading.</p>
+          <p>Borrow, trade, and repay.</p>
+          <p>Leverage your assets2 with margin trading.</p>
           <span>View Details</span>
         </div>
         <div>
-          <div></div>
+          <span>
+            <Image
+              src="/icons/derivative.png"
+              alt="Coin Logo"
+              className={styles.icon}
+              width={50}
+              height={50}
+              priority
+            />
+          </span>
           <h2>Crypto Derivatives</h2>
-          <p>We are the best crypto exchange for trading crypto futures.</p>
+          <p>We are the best crypto exchange</p>
+          <p>for trading crypto futures.</p>
           <span>View Details</span>
         </div>
         <div>
-          <div></div>
+          <span>
+            <Image
+              src="/icons/earn.png"
+              alt="Coin Logo"
+              className={styles.icon}
+              width={50}
+              height={50}
+              priority
+            />
+          </span>
           <h2>QFSEarn</h2>
-          <p>Invest and earn steady income with the help of a professional asset manager.</p>
+          <p>Invest and earn steady income with</p>
+          <p>the help of a professional asset manager.</p>
           <span>View Details</span>
         </div>
         <div>
-          <div></div>
+          <span>
+            <Image
+              src="/icons/buy.png"
+              alt="Coin Logo"
+              className={styles.icon}
+              width={50}
+              height={50}
+              priority
+            />
+          </span>
           <h2>Buy Crypto</h2>
-          <p>Purchase crypto quickly and easily on our popular and industry-leading platform.</p>
+          <p>Purchase crypto quickly and easily</p>
+          <p>on our popular and industry-leading platform.</p>
           <span>View Details</span>
         </div>
         <div>
-          <div></div>
+          <span>
+            <Image
+              src="/icons/margin.png"
+              alt="Coin Logo"
+              className={styles.icon}
+              width={50}
+              height={50}
+              priority
+            />
+          </span>
           <h2>Margin Trading</h2>
-          <p>Borrow, trade, and repay. Leverage your assets2 with margin trading.</p>
+          <p>Borrow, trade, and repay.</p>
+          <p>Leverage your assets2 with margin trading.</p>
           <span>View Details</span>
         </div>
       </div>
-      <div>
-        <div></div>
-        <div></div>
-        <div></div>
+      <div className={styles.scroll}>
       </div>
     </section>
   )
@@ -188,26 +289,28 @@ export function Explore(){
 export function Start(){
   return (
     <section className={styles.start}>
-      <h1>How To Get Started</h1>
-      <div>
+      <div className={styles.circle5}></div>
+      <div className={styles.circle6}></div>
+      <h1 className={styles.head}>How To Get Started</h1>
+      <div className={styles.steps}>
         <div>
-          <div></div>
+          <span>01</span>
           <h2>Connect Wallet</h2>
           <p>Click connect wallet button.</p>
           <button>Connect Wallet</button>
         </div>
         <div>
-          <div></div>
+          <span>02</span>
           <h2>Select Wallet</h2>
           <p>Choose your prefered wallet to backup and click on connect.</p>
         </div>
         <div>
-          <div></div>
+          <span>03</span>
           <h2>Backup your wallet</h2>
           <p>Your wallet backup may also be referred to as a: backup, recovery seed, seed, seed phrase, BIP-39 seed phrase, mnemonic, recovery phrase, (plus various combinations of these words)</p>
         </div>
         <div>
-          <div></div>
+          <span>04</span>
           <h2>Start your journey</h2>
           <p>Having a safe wallet backup means you can recover your Bitcoin in case of hardware failure or the loss of your device</p>
         </div>
@@ -225,7 +328,7 @@ export function Recovery(){
           <Image/>
         </div>
         <div>
-          <h1>How does wallet backup and recovery work?</h1>
+          <h1 className={styles.head}>How does wallet backup and recovery work?</h1>
           <div>
             <div>
               <h2>Secure</h2>
@@ -245,7 +348,7 @@ export function Faq(){
     <section className={styles.faq}>
       <div>
         <h3>FAQ</h3>
-        <h1>Your questions answered.</h1>
+        <h1 className={styles.head}>Your questions answered.</h1>
         <p>Let's do our best to answer your most frequently asked questions.</p>
         <div>
           <div>
@@ -294,7 +397,7 @@ export function Faq(){
 export function Trust(){
   return (
     <section className={styles.trust}>
-      <h1>Trusted By</h1>
+      <h1 className={styles.head}>Trusted By</h1>
       <div>
         <ul>
           <li></li>
