@@ -16,7 +16,7 @@ export default function Page() {
       <Hero/>
       <Choose/>
       {/* <Popup/> */}
-      <Popup2/>
+      {/* <Popup2/> */}
     </div>
   )
 }
@@ -30,7 +30,17 @@ export function Navbar(){
             <li>NFT</li>
             <li>Web3</li>
         </ul>
+        {/* <main>
+          <ol>
+            <li>DApps</li>
+            <li>NFT</li>
+            <li>Web3</li>
+          </ol>
+        </main> */}
         <button>Secure Wallet</button>
+        <div>
+          <span></span><span></span><span></span>
+        </div>
     </nav>
   )
 }
@@ -127,7 +137,7 @@ export function Choose(){
 
   return (
     <section className={styles.choice}>
-        <div>
+        <div className={styles.wallet}>
             <p>Choose wallet</p>
             <p>
               Show uninstalled
@@ -151,7 +161,6 @@ export function Choose(){
             )
           })}
         </div>
-        
     </section>
   )
 }

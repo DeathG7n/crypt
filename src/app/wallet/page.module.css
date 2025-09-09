@@ -15,7 +15,7 @@
 }
 
 .nav{
-  width: 100%;
+  width: 100vw;
   position: fixed;
   display: flex;
   justify-content: space-between;
@@ -72,6 +72,79 @@
   outline-color: rgb(186, 217, 253);
 }
 
+@media (max-width: 600px){
+  .nav{
+    width: 100vw;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+    gap: 10px;
+  }
+  .nav h1{
+    color: #44c4ff;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  .nav ul{
+    display: none;
+  }
+
+  .nav main{
+    display: block;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.9);
+  }
+
+  .nav ol{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(7, 16, 32);
+    height: 100vh;
+    width: 80vw;
+    padding: 20px;
+    list-style-type: none;
+  }
+
+  .nav ol li{
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .nav div{
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto ;
+    gap: 2px;
+  }
+
+  .nav div span{
+    width: 20px;
+    height: 2px;
+    background-color: #ffffff;
+  }
+
+
+  .gold{
+    margin-right: 1px;
+  }
+
+  .pink{
+    margin-right: 1px;
+  }
+
+  .nav button{
+    font-size: 14px;
+    padding: 5px;
+  }
+}
+
 .hero{
   width: 100vw;
   padding: 100px 60px 10px 60px;
@@ -85,6 +158,22 @@
     font-size: 30px;
 }
 
+@media (max-width: 600px){
+    .hero{
+      padding: 100px 10px 50px 10px;
+      align-items: flex-start;
+    }
+
+    .hero h1{
+      font-size: 18px;
+    }
+
+    .hero div{
+      font-size: 16px;
+      line-height: 20px;
+    }
+}
+
 .choice{
     display: flex;
     flex-direction: column;
@@ -94,12 +183,12 @@
     color: #ffffff;
 }
 
-.choice div:first-child{
+.wallet{
     display: flex;
     gap: 150px;
 }
 
-.choice div:first-child p:last-child{
+.wallet p:last-child{
     display: flex;
     align-items: center;
     gap: 20px;
@@ -162,6 +251,49 @@
     border-radius: 50%;
 }
 
+@media (max-width: 600px) {
+  .choice{
+    padding: 20px 10px;
+  }
+
+  .wallet{
+      display: flex;
+      gap: 20px;
+      font-size: 14px;
+  }
+
+  .check{
+      width: 30px;
+      height: 15px;
+  }
+
+  .check:before{
+      width: 12px;
+      height: 12px;
+      border-radius: 200px;
+  }
+
+  .cardbox{
+    gap: 10px;
+    padding: 5px 0;
+  }
+
+  .card{
+    padding: 10px;
+    gap: 50px;
+    align-items: center;
+  }
+
+  .card h2{
+    font-size: 16px;
+  }
+
+  .card img{
+    width: 25px;
+    height: 25px;
+  }
+}
+
 .popup{
   position: fixed;
   width: 100vw;
@@ -219,6 +351,37 @@
   transition-duration: 300ms;
   transition-timing-function: linear;
   margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+  .popup main{
+    position: absolute;
+    bottom: 10px;
+    left: 15px;
+    width: 90vw;
+  }
+
+  .popup p{
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .popup button{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    font-family: "Outfit", sans-serif;
+    border: 1px solid rgb(58, 150, 255);
+    padding: 0.7rem 1.4rem;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition-duration: 300ms;
+    transition-timing-function: linear;
+    margin-top: 20px;
+  }
 }
 
 .popup2{

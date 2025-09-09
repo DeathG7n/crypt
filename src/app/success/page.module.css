@@ -12,6 +12,7 @@
   justify-content: center;
   padding: 100px 350px;
   text-align: center;
+  width: 100vw;
 }
 
 .page img{
@@ -55,4 +56,10 @@
   cursor: pointer;
   transition-duration: 300ms;
   transition-timing-function: linear;
+}
+
+@media (max-width: 600px) {
+  .page{
+    padding: 100px 10px;
+  }
 }
