@@ -12,11 +12,12 @@ export default function Page() {
       <Secure/>
       <Explore/>
       <Start/>
-      {/* <Recovery/>
+      <Recovery/>
       <Faq/>
       <Trust/>
       <Newsletter/>
-      <Footer/> */}
+      <Footer/>
+      {/* <Popup/> */}
     </div>
   )
 }
@@ -37,7 +38,24 @@ export function Navbar(){
             <li>TOKEN</li>
             <li>NFT</li>
         </ul>
+        {/* <main>
+          <ol>
+            <li>IGO</li>
+            <li>LAUNCHPAD</li>
+            <li>STAKING</li>
+            <li>FARMING</li>
+            <li>CRYPTO</li>
+            <li>DEFI</li>
+            <li>WEB3</li>
+            <li>IDO</li>
+            <li>TOKEN</li>
+            <li>NFT</li>
+          </ol>
+        </main> */}
         <button>Connect Wallet</button>
+        <div>
+          <span></span><span></span><span></span>
+        </div>
     </nav>
   )
 }
@@ -187,7 +205,7 @@ export function Explore(){
             <Image
               src="/icons/spot-trading.png"
               alt="Coin Logo"
-              className={styles.icon}
+  
               width={50}
               height={50}
               priority
@@ -203,7 +221,7 @@ export function Explore(){
             <Image
               src="/icons/margin.png"
               alt="Coin Logo"
-              className={styles.icon}
+  
               width={50}
               height={50}
               priority
@@ -219,7 +237,7 @@ export function Explore(){
             <Image
               src="/icons/derivative.png"
               alt="Coin Logo"
-              className={styles.icon}
+  
               width={50}
               height={50}
               priority
@@ -235,7 +253,7 @@ export function Explore(){
             <Image
               src="/icons/earn.png"
               alt="Coin Logo"
-              className={styles.icon}
+  
               width={50}
               height={50}
               priority
@@ -251,7 +269,7 @@ export function Explore(){
             <Image
               src="/icons/buy.png"
               alt="Coin Logo"
-              className={styles.icon}
+  
               width={50}
               height={50}
               priority
@@ -267,7 +285,7 @@ export function Explore(){
             <Image
               src="/icons/margin.png"
               alt="Coin Logo"
-              className={styles.icon}
+  
               width={50}
               height={50}
               priority
@@ -321,21 +339,26 @@ export function Start(){
 export function Recovery(){
   return (
     <section className={styles.recovery}>
-      
+      <div className={styles.circle7}></div>
+      <div className={styles.circle8}></div>
       <div>
-        <div>
-          <Image/>
-        </div>
-        <div>
-          <h1 className={styles.head}>How does wallet backup and recovery work?</h1>
+        <Image
+          src="/Home Page/get.png"
+          alt="Coin Logo"
+          className={styles.icon}
+          width={450}
+          height={250}
+          priority
+        />
+      </div>
+      <div className={styles.backup}>
+        <h1>How does wallet backup and recovery work?</h1>
+        <div className={styles.crypto}>
           <div>
-            <div>
-              <h2>Secure</h2>
-              <p>First, we need to talk a little bit about how crypto wallets work. Crypto wallets work by holding cryptographic keys that are used to prove you have control over cryptoassets2 on a blockchain. Whenever you wish to do something with your cryptoassets2, you instruct the blockchain and use your private cryptographic key as a sort of digital signature to approve your desired action.</p>
-            </div>
-            <button>Connect Wallet</button>
+            <h2>Secure</h2>
+            <p>First, we need to talk a little bit about how crypto wallets work. Crypto wallets work by holding cryptographic keys that are used to prove you have control over cryptoassets2 on a blockchain. Whenever you wish to do something with your cryptoassets2, you instruct the blockchain and use your private cryptographic key as a sort of digital signature to approve your desired action.</p>
           </div>
-          
+          <button>Connect Wallet</button>
         </div>
       </div>
     </section>
@@ -345,13 +368,15 @@ export function Recovery(){
 export function Faq(){
   return (
     <section className={styles.faq}>
-      <div>
+      <div className={styles.faqhero}>
         <h3>FAQ</h3>
         <h1 className={styles.head}>Your questions answered.</h1>
-        <p>Let's do our best to answer your most frequently asked questions.</p>
-        <div>
-          <div>
-            <Image/>
+        <p className={styles.faqheropara}>Let's do our best to answer your most frequently asked questions.</p>
+        <div className={styles.quest}>
+          <div className={styles.questbox}>
+            <span className={styles.questspan}>
+              <p>?</p>
+            </span>
             <div>
               <h2>Still have questions?</h2>
               <p>Can't find the answer you're looking for?Please chat to our friendly team!</p>
@@ -360,29 +385,29 @@ export function Faq(){
           <button>Connect Wallet</button>
         </div>
       </div>
-      <div>
+      <div className={styles.faquest}>
         <div>
-          <p className={styles.questions}>How can I secure my wallet?</p>
+          <p className={styles.questions}>How can I secure my wallet? <span>{">"}</span></p>
           <span className={styles.answers}>
             <p>Set a unique passcode for your wallet.</p>
             <p>Also, make sure the numbers are random. Birthdays, anniversaries, house addresses, and the last digits of your phone number are all popular combinations and are crackable codes to a resourceful criminal.</p>
           </span>
         </div>
         <div>
-          <p className={styles.questions}>How to backup a crypto wallet?</p>
+          <p className={styles.questions}>How to backup a crypto wallet?  <span>{">"}</span></p>
           <span className={styles.answers}>
             <p>1. Export Private Keys/Seed Phrase: Go to your wallet's settings and select the “backup wallet” or “export keys” option.</p>
             <p>2. Secure Your Backup: Store backups in multiple secure locations like USB drives, paper copies in fireproof safes, and safety deposit boxes.</p>
           </span>
         </div>
         <div>
-          <p className={styles.questions}>How to keep bitcoin wallet safe?</p>
+          <p className={styles.questions}>How to keep bitcoin wallet safe?  <span>{">"}</span></p>
           <span className={styles.answers}>
             <p>Securing Your Bitcoin: Choosing a Reputable Exchange.</p>
           </span>
         </div>
         <div>
-          <p className={styles.questions}>How do I trust a safe wallet?</p>
+          <p className={styles.questions}>How do I trust a safe wallet?  <span>{">"}</span></p>
           <span className={styles.answers}>
             <p>Back up your wallet.</p>
             <p>Be cautious of phishing scams.</p>
@@ -394,36 +419,49 @@ export function Faq(){
 }
 
 export function Trust(){
+  const brands = [
+    {src: "/brands/item-1.png"}, 
+    {src: "/brands/item-2.png"}, 
+    {src: "/brands/item-3.png"},
+    {src: "/brands/item-4.png"},
+    {src: "/brands/item-5.png"},
+    {src: "/brands/item-6.png"},
+    {src: "/brands/item-7.png"},
+    {src: "/brands/item-8.png"},
+    {src: "/brands/item-9.png"},
+    {src: "/brands/item-10.png"},
+  ]
   return (
     <section className={styles.trust}>
       <h1 className={styles.head}>Trusted By</h1>
-      <div>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+      <div className={styles.marquee1}>
+        {brands.sort()?.map((brand, i)=>{
+          return(
+            <Image
+              src={brand.src}
+              alt="Coin Logo"
+  
+              width={120}
+              height={30}
+              priority
+              key={i}
+            />
+          )
+        })}
       </div>
-      <div>
-        <ul>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
+      <div className={styles.marquee2}>
+        {brands.sort()?.map((brand, i)=>{
+          return(
+            <Image
+              src={brand.src}
+              alt="Coin Logo"
+              width={120}
+              height={30}
+              priority
+              key={i}
+            />
+          )
+        })}
       </div>
     </section>
   )
@@ -432,10 +470,8 @@ export function Trust(){
 export function Newsletter(){
   return (
     <section className={styles.news}>
-      <div>
-        <div>
-          <h1>Quick Links</h1>
-        </div>
+      <div className={styles.quick}>
+        <h1>Quick Links</h1>
         <div>
           <ul>
             <li>IGO</li>
@@ -455,11 +491,11 @@ export function Newsletter(){
           </ul>
         </div>
       </div>
-      <div>
+      <div className={styles.letter}>
         <h1>Newsletter</h1>
         <p>Welcome to Cryptnetworkweb3 your gateway to the world of Web3 trading! Our user-friendly platform</p>
         <span>
-          <input type="email" />
+          <input type="email" placeholder="Enter Your Email..."/>
           <button>?</button>
         </span>
       </div>
@@ -478,19 +514,29 @@ export function Footer(){
 export function Popup(){
   return (
     <section className={styles.popup}>
-      <div>
-        <div>
-          <h1>Connect Wallet</h1>
-          <p>Gateway to Web3</p>
+      <main>
+        <div className={styles.popuphead}>
+          <div>
+            <h1>Connect Wallet</h1>
+            <p>Gateway to Web3</p>
+          </div>
+          <span>X</span>
         </div>
-        <div>X</div>
-      </div>
-      <div>Backup Wallet</div>
-      <div>
-        <Image/>
-        <h1>Automatic/Manual Backup</h1>
-        <button>Continue</button>
-      </div>
+        <div className={styles.popupbackup}>Backup Wallet</div>
+        <div>
+          <Image
+            src="/icons/icon.png"
+            alt="Coin Logo"
+
+            width={50}
+            height={50}
+            priority
+          />
+          <h1>Automatic/Manual Backup</h1>
+          <button>Continue</button>
+        </div>
+      </main>
+      
     </section>
   )
 }

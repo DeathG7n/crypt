@@ -37,7 +37,13 @@ export default function Page() {
   }
   return (
     <div className={styles.page}>
-      <Image/>
+      <Image
+        src="/Success Page/success.jpg"
+        alt="Coin Logo"
+        width={50}
+        height={50}
+        priority
+      />
       <h1>Backup Successful</h1>
       <p>UID: wu233382872262</p>
       <p>Your wallet data has been successfully backed up! We’ve securely stored your information, ensuring your assets remain protected. Feel free to continue managing your wallet or explore additional features.</p>
