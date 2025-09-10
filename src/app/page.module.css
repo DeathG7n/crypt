@@ -544,7 +544,7 @@
   }
 
   .stats .block{
-    width: 40%;
+    width: 40vw;
     height: auto;
     display: flex;
     flex-direction: column;
