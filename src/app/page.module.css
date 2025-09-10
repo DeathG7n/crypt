@@ -175,9 +175,12 @@
   width: 100vw;
   padding: 150px 60px 100px 60px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   background-color: rgb(2, 5, 10);
   color: #ffffff;
+}
+.heromain{
+  display: flex;
 }
 .main{
   width: 50%;
@@ -359,6 +362,9 @@
   width:50%;
   height: 350px;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .explore::-webkit-scrollbar, .connect::-webkit-scrollbar, .imgBox::-webkit-scrollbar{
@@ -367,10 +373,6 @@
 
 .web3{
   height: auto;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  z-index: 3;
 }
 
 .globe{
@@ -401,6 +403,8 @@
 .stats{
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .stats div{
@@ -418,19 +422,21 @@
 
 @media (max-width: 600px){
   .hero{
-    width: 100vw;
     padding: 100px 10px 50px 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-  .main{
-    width: 100%;
-    height: 450px;
-    padding-right: 30px;
-    display: flex;
+
+  .heromain{
     flex-direction: column;
-    position: relative;
+    align-items: center;
+  }
+  .main{
+    width: 100vw;
+    height: auto;
+    padding: 0px 10px 50px 10px;
+    align-items: center;
   }
 
   .main h1{
@@ -457,19 +463,19 @@
   }
 
   .bitcoin{
-    top: 200px;
-    left: 200px;
+    top: 250px;
+    left: 300px;
   }
 
   .imgBox{
     width: 100vw;
-    height: 350px;
-    top: -200px;
+    height: auto;
+    padding: 20px 0px;
   }
 
   .web3{
-    width: auto;
-    position: relative;
+    width: 90vw;
+    z-index: 3;
   }
 
   .globe{
@@ -477,21 +483,16 @@
   }
 
   .tether{
-    max-width: 100%;
-    height: auto;
-    display: block;
-    position: absolute;
-    bottom: 100px;
+    bottom: 0px;
     left: 10px;
     animation: rotate 10s linear infinite;
   }
 
   .stats{
-    margin-top: -250px;
     width: 100vw;
-    display: flex;
     flex-wrap: wrap;
     gap: 20px;
+    padding: 20px 0px;
   }
 
   .stats div{

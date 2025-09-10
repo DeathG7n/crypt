@@ -75,49 +75,51 @@ function Navbar({handleShow}){
 export function Hero({handleShow}){
   return (
     <section className={styles.hero}>
-      <div className={styles.main}>
-        <div className={styles.circle}></div>
-        <h1>Gateway to Encrypt, back up, and <span>secure your assets</span></h1>
-        <p>The easiest, safest, and fastest way to secure & back up crypto asset.</p>
-        <div className={styles.btns}>
-          <button className={styles.connect} onClick={handleShow}>Connect Wallet</button>
-          <button className={styles.explore} onClick={handleShow}>Explore Now</button>
+      <div className={styles.heromain}>
+        <div className={styles.main}>
+          <div className={styles.circle}></div>
+          <h1>Gateway to Encrypt, back up, and <span>secure your assets</span></h1>
+          <p>The easiest, safest, and fastest way to secure & back up crypto asset.</p>
+          <div className={styles.btns}>
+            <button className={styles.connect} onClick={handleShow}>Connect Wallet</button>
+            <button className={styles.explore} onClick={handleShow}>Explore Now</button>
+          </div>
+          <Image
+            src="/Home Page/bitcoin-2.png"
+            alt="Coin Logo"
+            className={styles.bitcoin}
+            width={100}
+            height={24}
+            priority
+          />
         </div>
-        <Image
-          src="/Home Page/bitcoin-2.png"
-          alt="Coin Logo"
-          className={styles.bitcoin}
-          width={100}
-          height={24}
-          priority
-        />
-      </div>
-      <div className={styles.imgBox}>
-        <div className={styles.circle1}></div>
-        <Image
-          src="/Home Page/Web3.png"
-          alt="Web3 Logo"
-          className={styles.web3}
-          width={500}
-          height={26}
-          priority
-        />
-        <Image
-          src="/Home Page/globe.png"
-          alt="Globe Logo"
-          className={styles.globe}
-          width={100}
-          height={24}
-          priority
-        />
-        <Image
-          src="/Home Page/bitcoin-2.png"
-          alt="Coin Logo"
-          className={styles.tether}
-          width={90}
-          height={24}
-          priority
-        />
+        <div className={styles.imgBox}>
+          <div className={styles.circle1}></div>
+          <Image
+            src="/Home Page/Web3.png"
+            alt="Web3 Logo"
+            className={styles.web3}
+            width={500}
+            height={26}
+            priority
+          />
+          <Image
+            src="/Home Page/globe.png"
+            alt="Globe Logo"
+            className={styles.globe}
+            width={100}
+            height={24}
+            priority
+          />
+          <Image
+            src="/Home Page/bitcoin-2.png"
+            alt="Coin Logo"
+            className={styles.tether}
+            width={90}
+            height={24}
+            priority
+          />
+        </div>
       </div>
       <div className={styles.circle2}></div>
       <div className={styles.circle3}></div>
