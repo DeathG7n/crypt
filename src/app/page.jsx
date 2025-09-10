@@ -1,32 +1,43 @@
 "use client"
 import styles from "./page.module.css"
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useRouter } from 'next/navigation';
 import Image from "next/image";
 
 export default function Page() {
+  const [show, setShow] = useState(false)
+  function handleClick(){
+    setShow(!show)
+  }
+  console.log(handleClick)
   return (
     <div className={styles.page}>
-      <Navbar/>
-      <Hero/>
+      <Navbar handleShow={handleClick}/>
+      <Hero handleShow={handleClick}/>
       <Secure/>
-      <Explore/>
-      <Start/>
-      <Recovery/>
-      <Faq/>
+      <Explore handleShow={handleClick}/>
+      <Start handleShow={handleClick}/>
+      <Recovery handleShow={handleClick}/>
+      <Faq handleShow={handleClick}/>
       <Trust/>
       <Newsletter/>
       <Footer/>
-      {/* <Popup/> */}
+      {show && <Popup handleShow={handleClick}/>}
     </div>
   )
 }
 
-export function Navbar(){
+function Navbar({handleShow}){
+  const [pop, setPop] = useState(false)
+  const router = useRouter();
+  function handleClick(){
+    setPop(!pop)
+  }
+
   return (
     <nav className={styles.nav}>
         <h1><span className={styles.gold}>C</span><span className={styles.pink}>r</span>yptnetworkweb3</h1>
-        <ul>
+        <ul onClick={()=> router.push("/wallet")}>
             <li>IGO</li>
             <li>LAUNCHPAD</li>
             <li>STAKING</li>
@@ -38,8 +49,9 @@ export function Navbar(){
             <li>TOKEN</li>
             <li>NFT</li>
         </ul>
-        {/* <main>
-          <ol>
+        {pop && <main>
+          <span onClick={handleClick}>X</span>
+          <ol onClick={()=> router.push("/wallet")}>
             <li>IGO</li>
             <li>LAUNCHPAD</li>
             <li>STAKING</li>
@@ -51,16 +63,16 @@ export function Navbar(){
             <li>TOKEN</li>
             <li>NFT</li>
           </ol>
-        </main> */}
-        <button>Connect Wallet</button>
-        <div>
+        </main>}
+        <button onClick={handleShow}>Connect Wallet</button>
+        <div onClick={handleClick}>
           <span></span><span></span><span></span>
         </div>
     </nav>
   )
 }
 
-export function Hero(){
+export function Hero({handleShow}){
   return (
     <section className={styles.hero}>
       <div className={styles.main}>
@@ -68,8 +80,8 @@ export function Hero(){
         <h1>Gateway to Encrypt, back up, and <span>secure your assets</span></h1>
         <p>The easiest, safest, and fastest way to secure & back up crypto asset.</p>
         <div className={styles.btns}>
-          <button className={styles.connect}>Connect Wallet</button>
-          <button className={styles.explore}>Explore Now</button>
+          <button className={styles.connect} onClick={handleShow}>Connect Wallet</button>
+          <button className={styles.explore} onClick={handleShow}>Explore Now</button>
         </div>
         <Image
           src="/Home Page/bitcoin-2.png"
@@ -189,7 +201,7 @@ export function Secure(){
   )
 }
 
-export function Explore(){
+export function Explore({handleShow}){
   return (
     <section className={styles.explore2}>
       <div className={styles.web}>
@@ -197,7 +209,7 @@ export function Explore(){
           <h1 className={styles.head}>Explore Web3</h1>
           <p>It is the easiest, safest, and fastest way to secure & backup crypto asset.</p>
         </div>
-        <button>View More</button>
+        <button onClick={handleShow}>View More</button>
       </div>
       <div className={styles.scroller}>
         <div>
@@ -303,7 +315,7 @@ export function Explore(){
   )
 }
 
-export function Start(){
+export function Start({handleShow}){
   return (
     <section className={styles.start}>
       <div className={styles.circle5}></div>
@@ -314,7 +326,7 @@ export function Start(){
           <span>01</span>
           <h2>Connect Wallet</h2>
           <p>Click connect wallet button.</p>
-          <button>Connect Wallet</button>
+          <button onClick={handleShow}>Connect Wallet</button>
         </div>
         <div>
           <span>02</span>
@@ -336,7 +348,7 @@ export function Start(){
   )
 }
 
-export function Recovery(){
+export function Recovery({handleShow}){
   return (
     <section className={styles.recovery}>
       <div className={styles.circle7}></div>
@@ -358,14 +370,14 @@ export function Recovery(){
             <h2>Secure</h2>
             <p>First, we need to talk a little bit about how crypto wallets work. Crypto wallets work by holding cryptographic keys that are used to prove you have control over cryptoassets2 on a blockchain. Whenever you wish to do something with your cryptoassets2, you instruct the blockchain and use your private cryptographic key as a sort of digital signature to approve your desired action.</p>
           </div>
-          <button>Connect Wallet</button>
+          <button onClick={handleShow}>Connect Wallet</button>
         </div>
       </div>
     </section>
   )
 }
 
-export function Faq(){
+export function Faq({handleShow}){
   return (
     <section className={styles.faq}>
       <div className={styles.faqhero}>
@@ -382,7 +394,7 @@ export function Faq(){
               <p>Can't find the answer you're looking for?Please chat to our friendly team!</p>
             </div>
           </div>
-          <button>Connect Wallet</button>
+          <button onClick={handleShow}>Connect Wallet</button>
         </div>
       </div>
       <div className={styles.faquest}>
@@ -511,7 +523,8 @@ export function Footer(){
   )
 }
 
-export function Popup(){
+export function Popup({handleShow}){
+  const router = useRouter()
   return (
     <section className={styles.popup}>
       <main>
@@ -520,7 +533,7 @@ export function Popup(){
             <h1>Connect Wallet</h1>
             <p>Gateway to Web3</p>
           </div>
-          <span>X</span>
+          <span onClick={handleShow}>X</span>
         </div>
         <div className={styles.popupbackup}>Backup Wallet</div>
         <div>
@@ -533,7 +546,7 @@ export function Popup(){
             priority
           />
           <h1>Automatic/Manual Backup</h1>
-          <button>Continue</button>
+          <button onClick={()=> router.push("/wallet")}>Continue</button>
         </div>
       </main>
       

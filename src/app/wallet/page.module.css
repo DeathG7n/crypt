@@ -100,6 +100,17 @@
     background-color: rgba(0,0,0,0.9);
   }
 
+  .nav main span{
+    color: #f5f3f3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0px;
+    right: 100px;
+    font-weight: 900;
+  }
+
   .nav ol{
     display: flex;
     flex-direction: column;
@@ -324,6 +335,10 @@
   text-align: center;
 }
 
+.popup h1{
+  text-transform: capitalize;
+}
+
 .popup span{
     position: absolute;
     top: 0px;
@@ -443,7 +458,6 @@
 .popup2subhead span{
     width: fit-content;
     padding: 0 40px 0 0;
-    border-bottom: 1px solid;
     cursor: pointer;
 }
 
