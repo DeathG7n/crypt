@@ -490,6 +490,10 @@
     text-align: center;
   }
 
+  .circle, .circle1, .circle2, .circle3, .circle4, .circle5, .circle6, .circle7, .circle8, .circle9{
+    display: none;
+  }
+
   .main p{
     text-align: center;
     font-size: 14px;
@@ -1588,7 +1592,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(0, 27, 56);
+  background-color: rgb(7, 16, 32);
   color: #ffffff;
   position: relative;
 }
@@ -1772,6 +1776,7 @@
   .news{
     padding: 50px 10px 20px 10px;
     flex-direction: column;
+    background-image: radial-gradient(closest-side, rgba(45, 226, 226, 0.21), rgb(7, 16, 32));
   }
 
   .quick{
@@ -1843,7 +1848,7 @@
     justify-content: center;
     align-items: center;
     border-top: 1px solid #584b44;
-    background-color: rgb(0, 27, 56);
+    background-color: rgb(7, 16, 32);
   }
 }
 
