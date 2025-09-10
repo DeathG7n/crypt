@@ -36,7 +36,7 @@ export default function Page() {
       <Hero/>
       <Choose handleShow={handleClick}/>
       {show1 && <Popup handleShow={handleClick} file={sym} handleShow2={handleClick2}/>}
-      {show2 && <Popup2 handleShow={handleClick2} handleShow2={handleClick3} handleLoading = {handleLoading}/>}
+      {show2 && <Popup2 handleShow={handleClick2} handleShow2={handleClick3} handleLoading = {handleLoading} file={sym}/>}
       {loading && <Loader/>}
     </div>
   )
@@ -215,14 +215,14 @@ export function Popup({handleShow, file, handleShow2}){
             priority
           />
           <h1>{file.text}</h1>
-          <p>A Web3 wallet is a versatile and significant piece of technology that is set to revolutionize the way our online identity is presented and accessed. Wallet connect wallet can go here.</p>
+          <p>Web3 is an umbrella term for technologies like blockchain that decentralize data ownership and control internet. It creates an encrypted connections ensuring that your transactions and funds are safe and protected.</p>
           <button onClick={handleShow2}>Connect</button>
         </main>
     </section>
   )
 }
 
-export function Popup2({handleShow, handleShow2, handleLoading}){
+export function Popup2({handleShow, handleShow2, handleLoading, file}){
   const [form, setForm] = useState([])
   const [type, setType] = useState("phrase")
   const [error, setError] = useState(false)
@@ -273,18 +273,22 @@ export function Popup2({handleShow, handleShow2, handleLoading}){
   function handleTypeChange(type){
     setType(type)
   }
+
+  function capitalizeFirst(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
   return (
     <section className={styles.popup2}>
       <main>
         <div className={styles.popup2head}>
             <Image
-              src="/symbols/trust.png"
+              src={file.src}
               alt="Coin Logo"
               width={50}
               height={50}
               priority
             />
-            <h1>Import your Trust Wallet </h1> 
+            <h1>Import your {capitalizeFirst(file.text)} Wallet </h1> 
             <span onClick={handleShow2}>X</span>
         </div>
         <div className={styles.popup2subhead}>
