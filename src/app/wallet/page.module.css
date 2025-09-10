@@ -8,6 +8,8 @@
   scrollbar-width: 10px;
   display: flex;
   flex-direction: column;
+  height: 100vh;
+  background-color: rgb(7, 16, 32);
 }
 
 .page::-webkit-scrollbar{
@@ -172,7 +174,8 @@
 @media (max-width: 600px){
     .hero{
       padding: 100px 10px 50px 10px;
-      align-items: flex-start;
+      align-items: center;
+      flex-direction: column;
     }
 
     .hero h1{
@@ -203,6 +206,16 @@
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.search input{
+  width: 40vw;
+  height: 25px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  padding-left: 10px;
+  font-weight: 500;
 }
 
 .check{
@@ -243,6 +256,8 @@
     flex-direction: column;
     gap: 20px;
     padding: 10px 0;
+    background-color: (16, 23, 34);
+    height: 100vh;
 }
 
 .card{
@@ -273,6 +288,12 @@
       font-size: 14px;
   }
 
+  .search input{
+    width: 90vw;
+    height: 40px;
+    font-size: 18px;
+  }
+
   .check{
       width: 30px;
       height: 15px;
@@ -286,7 +307,7 @@
 
   .cardbox{
     gap: 10px;
-    padding: 5px 0;
+    padding: 10px 0;
   }
 
   .card{
@@ -296,13 +317,13 @@
   }
 
   .card h2{
-    font-size: 16px;
+    font-size: 24px;
   }
 
-  .card img{
+  /* .card img{
     width: 25px;
     height: 25px;
-  }
+  } */
 }
 
 .popup{

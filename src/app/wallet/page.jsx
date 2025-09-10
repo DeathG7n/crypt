@@ -84,83 +84,90 @@ export function Hero(){
 }
 
 export function Choose({handleShow}){
-  const files = [
-  { src: "/symbols/akt.png", text: "akt" },
-  { src: "/symbols/alice.png", text: "alice" },
-  { src: "/symbols/alphawallet.jpg", text: "alphawallet" },
-  { src: "/symbols/anchor.png", text: "anchor" },
-  { src: "/symbols/argent.jpg", text: "argent" },
-  { src: "/symbols/atomic.png", text: "atomic" },
-  { src: "/symbols/atwallet.png", text: "atwallet" },
-  { src: "/symbols/authereum.png", text: "authereum" },
-  { src: "/symbols/bitkeep.png", text: "bitkeep" },
-  { src: "/symbols/bitpay.jpg", text: "bitpay" },
-  { src: "/symbols/blockchain.png", text: "blockchain" },
-  { src: "/symbols/bridge wallet.png", text: "bridge wallet" },
-  { src: "/symbols/bsc-logo.png", text: "bsc-logo" },
-  { src: "/symbols/coin98.png", text: "coin98" },
-  { src: "/symbols/coinbase.png", text: "coinbase" },
-  { src: "/symbols/coinomi.jpg", text: "coinomi" },
-  { src: "/symbols/coolwallet.png", text: "coolwallet" },
-  { src: "/symbols/cosmosstation.png", text: "cosmosstation" },
-  { src: "/symbols/crypto.com.png", text: "crypto.com" },
-  { src: "/symbols/cybavowallet.png", text: "cybavowallet" },
-  { src: "/symbols/dcentwallet.png", text: "dcentwallet" },
-  { src: "/symbols/dok-7.png", text: "dok-7" },
-  { src: "/symbols/easypocket.jpg", text: "easypocket" },
-  { src: "/symbols/eidoo.png", text: "eidoo" },
-  { src: "/symbols/ellipal.png", text: "ellipal" },
-  { src: "/symbols/equal.jpg", text: "equal" },
-  { src: "/symbols/exodus.png", text: "exodus" },
-  { src: "/symbols/fetch.jpg", text: "fetch" },
-  { src: "/symbols/gnosis safe multisig.jpg", text: "gnosis safe multisig" },
-  { src: "/symbols/graph.jpg", text: "graph" },
-  { src: "/symbols/gridplus.png", text: "gridplus" },
-  { src: "/symbols/harmony.png", text: "harmony" },
-  { src: "/symbols/huobi wallet.jpg", text: "huobi wallet" },
-  { src: "/symbols/iconex.png", text: "iconex" },
-  { src: "/symbols/infinito wallet.png", text: "infinito wallet" },
-  { src: "/symbols/infinity wallet.png", text: "infinity wallet" },
-  { src: "/symbols/kardachain.png", text: "kardachain" },
-  { src: "/symbols/keplr.png", text: "keplr" },
-  { src: "/symbols/keyringpro.png", text: "keyringpro" },
-  { src: "/symbols/ledger live.png", text: "ledger live" },
-  { src: "/symbols/lobstr.png", text: "lobstr" },
-  { src: "/symbols/loopring wallet.jpg", text: "loopring wallet" },
-  { src: "/symbols/maiar.png", text: "maiar" },
-  { src: "/symbols/mathwallet.png", text: "mathwallet" },
-  { src: "/symbols/meetone.jpg", text: "meetone" },
-  { src: "/symbols/metamask.png", text: "metamask" },
-  { src: "/symbols/midas.png", text: "midas" },
-  { src: "/symbols/morixwallet.png", text: "morixwallet" },
-  { src: "/symbols/mykey.png", text: "mykey" },
-  { src: "/symbols/nash.jpg", text: "nash" },
-  { src: "/symbols/onto.png", text: "onto" },
-  { src: "/symbols/ownbit-.png", text: "ownbit-" },
-  { src: "/symbols/peakdefi.png", text: "peakdefi" },
-  { src: "/symbols/pillar.png", text: "pillar" },
-  { src: "/symbols/rainbow.png", text: "rainbow" },
-  { src: "/symbols/safepal.png", text: "safepal" },
-  { src: "/symbols/sparkpoint.png", text: "sparkpoint" },
-  { src: "/symbols/spatium.jpg", text: "spatium" },
-  { src: "/symbols/swft wallet.png", text: "swft wallet" },
-  { src: "/symbols/tokenary.png", text: "tokenary" },
-  { src: "/symbols/tokenpocket.png", text: "tokenpocket" },
-  { src: "/symbols/torus.jpg", text: "torus" },
-  { src: "/symbols/trust.png", text: "trust" },
-  { src: "/symbols/trustvault.png", text: "trustvault" },
-  { src: "/symbols/unstoppable.png", text: "unstoppable" },
-  { src: "/symbols/viawallet.png", text: "viawallet" },
-  { src: "/symbols/vision.png", text: "vision" },
-  { src: "/symbols/wallet connect.jpg", text: "wallet connect" },
-  { src: "/symbols/wallet.io.png", text: "wallet.io" },
-  { src: "/symbols/walleth.png", text: "walleth" },
-  { src: "/symbols/wazirx.png", text: "wazirx" },
-  { src: "/symbols/xdc.png", text: "xdc" },
-  { src: "/symbols/zelcore.png", text: "zelcore" }
-];
+  const arranged = [
+    { src: "/symbols/exodus.png", text: "exodus" },
+    { src: "/symbols/trust.png", text: "trust" },
+    { src: "/symbols/wallet connect.jpg", text: "wallet connect" },
+    { src: "/symbols/lobstr.png", text: "lobstr" },
+    { src: "/symbols/atomic.png", text: "atomic" },
+    { src: "/symbols/metamask.png", text: "metamask" },
+    { src: "/symbols/rainbow.png", text: "rainbow" },
+    { src: "/symbols/argent.jpg", text: "argent" },
+    { src: "/symbols/gnosis safe multisig.jpg", text: "gnosis safe multisig" },
+    { src: "/symbols/crypto.com.png", text: "crypto.com | defi wallet" },
+    { src: "/symbols/pillar.png", text: "pillar" },
+    { src: "/symbols/anchor.png", text: "anchor" },
+    { src: "/symbols/onto.png", text: "onto" },
+    { src: "/symbols/tokenpocket.png", text: "tokenpocket" },
+    { src: "/symbols/mathwallet.png", text: "mathwallet" },
+    { src: "/symbols/bitpay.jpg", text: "bitpay" },
+    { src: "/symbols/maiar.png", text: "maiar" },
+    { src: "/symbols/ledger live.png", text: "ledger live" },
+    { src: "/symbols/walleth.png", text: "walleth" },
+    { src: "/symbols/authereum.png", text: "authereum" },
+    { src: "/symbols/huobi wallet.jpg", text: "huobi wallet" },
+    { src: "/symbols/eidoo.png", text: "eidoo" },
+    { src: "/symbols/mykey.png", text: "mykey" },
+    { src: "/symbols/loopring wallet.jpg", text: "loopring wallet" },
+    { src: "/symbols/trustvault.png", text: "trustvault" },
+    { src: "/symbols/coin98.png", text: "coin98" },
+    { src: "/symbols/coolwallet.png", text: "coolwallet s" },
+    { src: "/symbols/alice.png", text: "alice" },
+    { src: "/symbols/alphawallet.jpg", text: "alphawallet" },
+    { src: "/symbols/gridplus.png", text: "gridplus" },
+    { src: "/symbols/cybavowallet.png", text: "cybavowallet" },
+    { src: "/symbols/nash.jpg", text: "nash" },
+    { src: "/symbols/tokenary.png", text: "tokenary" },
+    { src: "/symbols/wazirx.png", text: "wazirx" },
+    { src: "/symbols/dcentwallet.png", text: "dcentwallet" },
+    { src: "/symbols/zelcore.png", text: "zelcore" },
+    { src: "/symbols/coinomi.jpg", text: "coinomi" },
+    { src: "/symbols/torus.jpg", text: "torus" },
+    { src: "/symbols/spatium.jpg", text: "spatium" },
+    { src: "/symbols/safepal.png", text: "safepal" },
+    { src: "/symbols/equal.jpg", text: "equal" },
+    { src: "/symbols/infinito wallet.png", text: "infinito" },
+    { src: "/symbols/wallet.io.png", text: "wallet.io" },
+    { src: "/symbols/infinity wallet.png", text: "infinity wallet" },
+    { src: "/symbols/ownbit-.png", text: "ownbit" },
+    { src: "/symbols/easypocket.jpg", text: "easypocket" },
+    { src: "/symbols/bridge wallet.png", text: "bridge wallet" },
+    { src: "/symbols/sparkpoint.png", text: "sparkpoint" },
+    { src: "/symbols/viawallet.png", text: "viawallet" },
+    { src: "/symbols/bitkeep.png", text: "bitkeep" },
+    { src: "/symbols/vision.png", text: "vision" },
+    { src: "/symbols/swft wallet.png", text: "swft wallet" },
+    { src: "/symbols/peakdefi.png", text: "peakdefi wallet" },
+    { src: "/symbols/cosmosstation.png", text: "cosmostation" },
+    { src: "/symbols/graph.jpg", text: "graph protocol" },
+    { src: "/symbols/kardachain.png", text: "kardiachain" },
+    { src: "/symbols/keplr.png", text: "keplr" },
+    { src: "/symbols/harmony.png", text: "harmony" },
+    { src: "/symbols/iconex.png", text: "iconex" },
+    { src: "/symbols/fetch.jpg", text: "fetch" },
+    { src: "/symbols/xdc.png", text: "xdc wallet" },
+    { src: "/symbols/unstoppable.png", text: "unstoppable wallet" },
+    { src: "/symbols/meetone.jpg", text: "meet.one" },
+    { src: "/symbols/dok-7.png", text: "dok wallet" },
+    { src: "/symbols/atwallet.png", text: "at.wallet" },
+    { src: "/symbols/morixwallet.png", text: "morix wallet" },
+    { src: "/symbols/midas.png", text: "midas wallet" },
+    { src: "/symbols/ellipal.png", text: "ellipal" },
+    { src: "/symbols/keyringpro.png", text: "keyring pro" },
+    { src: "/symbols/blockchain.png", text: "blockchain" },
+    { src: "/symbols/bsc-logo.png", text: "binance smart chain" },
+    { src: "/symbols/akt.png", text: "aktionariat" },
+    { src: "/symbols/coinbase.png", text: "coinbase" }
+  ];
 
+  const [search, setSearch] = useState([...arranged])
 
+  const handleChange = (e)=>{
+    const newfiles = arranged.filter(item =>item?.text.toLowerCase().includes(e.target.value.toLowerCase()))
+    setSearch(prevSearch => newfiles)
+  }
+
+  console.log(search)
 
   return (
     <section className={styles.choice}>
@@ -172,18 +179,21 @@ export function Choose({handleShow}){
               <label htmlFor="check" className={styles.check}></label>
             </p>
         </div>
+        <div className={styles.search}>
+          <input type="text" name="search" placeholder="Search Coin..." onChange={handleChange}/>
+        </div>
         <div className={styles.cardbox}>
-          {files.map((file, i) =>{
+          {search.map((file, i) =>{
             return(
               <div className={styles.card} key={i} onClick={()=> handleShow(file)}>
                 <Image
-                  src={file.src}
+                  src={file?.src}
                   alt="Coin Logo"
                   width={50}
                   height={50}
                   priority
                 />
-                <h2>{file.text}</h2>
+                <h2>{file?.text}</h2>
               </div>
             )
           })}
