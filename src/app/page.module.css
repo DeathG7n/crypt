@@ -6,7 +6,6 @@
 .page{
   overflow-y: scroll;
   overflow-x: hidden;
-  scrollbar-width: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -38,8 +37,8 @@
   list-style: none;
 }
 .nav main{
-    display: none;
-  }
+  display: none;
+}
 .nav ul li{
   color: #f0f0f0;
   text-decoration: none;
@@ -401,24 +400,68 @@
 }
 
 .stats{
-  width: 100%;
+  width: 88vw;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
-.stats div{
+.stats .block{
   width: 25%;
   height: 100px;
   display: flex;
   flex-direction: column;
-  margin-right: 30px;
   border-right: 1px solid white;
+  margin-right: 30px;
+}
+
+.stats .block:nth-child(4){
+  border-right: none;
 }
 
 .stats div h1{
   font-size: 24px;
+  display: flex;
+  align-items: center;
 }
+
+.odometer {
+  display: flex;
+  font-size: 24px;
+  overflow: hidden;
+  height: 1em;
+  width: fit-content;
+}
+
+.digit {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Only animate when class .animate is added */
+.animate .digit span {
+  animation: roll 500ms forwards;
+}
+
+.animate .digit:nth-child(2) span {
+  animation-delay: 250ms; 
+}
+.animate .digit:nth-child(3) span {
+  animation-delay: 125ms;
+}
+
+.digit span {
+  line-height: 1em;
+  height: 24px;
+  text-align: center;
+}
+
+@keyframes roll {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-910%); }
+}
+
 
 @media (max-width: 600px){
   .hero{
@@ -426,6 +469,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-image: radial-gradient(closest-side, rgba(0, 255, 255, 0.21), rgb(7, 16, 32));
   }
 
   .heromain{
@@ -491,16 +535,16 @@
   .stats{
     width: 100vw;
     flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px 0px;
+    gap: 10px;
+    padding: 20px;
   }
 
-  .stats div{
+  .stats .block{
     width: 40%;
     height: auto;
     display: flex;
     flex-direction: column;
-    margin-right: 5px;
+    margin-right: 0px;
     border: none;
   }
 
@@ -1422,6 +1466,7 @@
   justify-content: center;
   border: 1px solid #fff;
   color: #fff;
+  cursor: pointer;
 }
 
 .answers p{
@@ -1525,7 +1570,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #fff;
+    border: 1px solid #584b44;
     color: #fff;
   }
 
@@ -1548,11 +1593,34 @@
   position: relative;
 }
 
+.marqueewrapper {
+  overflow: hidden;
+  width: 100vw;
+}
+
+
+/* pause on hover/focus */
+.marquee-wrapper:hover .marquee__inner,
+.marquee-wrapper:focus-within .marquee__inner {
+  animation-play-state: paused;
+}
+
+@keyframes marquee-left {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(-100%); } /* -50% because content is duplicated */
+}
+
+@keyframes marquee-right {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(0%); } /* -50% because content is duplicated */
+}
+
 .marquee1{
   margin-top: 20px;
   display: flex;
   gap: 70px;
   padding: 20px 0;
+  animation: marquee-left 12s linear infinite;
 }
 
 .marquee1 img{
@@ -1567,6 +1635,7 @@
   display: flex;
   gap: 70px;
   padding: 20px 0;
+  animation: marquee-right 12s linear infinite;
 }
 
 @media (max-width: 600px) {

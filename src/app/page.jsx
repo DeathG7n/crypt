@@ -73,6 +73,26 @@ function Navbar({handleShow}){
 }
 
 export function Hero({handleShow}){
+  const ref = useRef(null);
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setInView(true);      // trigger animation
+          observer.unobserve(el); // run only once
+        }
+      },
+      { threshold: 0.5 } // 50% visible
+    );
+
+    if (el) observer.observe(el);
+
+    return () => observer.disconnect();
+  }, [])
   return (
     <section className={styles.hero}>
       <div className={styles.heromain}>
@@ -94,7 +114,6 @@ export function Hero({handleShow}){
           />
         </div>
         <div className={styles.imgBox}>
-          <div className={styles.circle1}></div>
           <Image
             src="/Home Page/Web3.png"
             alt="Web3 Logo"
@@ -124,21 +143,77 @@ export function Hero({handleShow}){
       <div className={styles.circle2}></div>
       <div className={styles.circle3}></div>
       <div className={styles.circle4}></div>
-      <div className={styles.stats}>
-        <div>
-          <h1>200+</h1>
+      <div className={[styles.stats, inView ? styles.animate: ""].join(' ')} ref={ref}>
+        <div className={styles.block} >
+          <h1>
+            <div className={styles.odometer} >
+              <div className={styles.digit}>
+                <span>2</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>2</span>
+              </div>
+              <div className={styles.digit}>
+                <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>0</span>
+              </div>
+              <div className={styles.digit}>
+                <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>0</span>
+              </div>
+            </div>+
+          </h1>
           <p>Countries Covered</p> 
         </div>
-        <div>
-          <h1>30 Million</h1>
+        <div className={styles.block}>
+          <h1>
+            <div className={styles.odometer} ref={ref}>
+              <div className={styles.digit}>
+                <span>3</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>3</span>
+              </div>
+              <div className={styles.digit}>
+                <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>0</span>
+              </div>
+            </div>Million
+          </h1>
           <p>Global Investors</p> 
         </div>
-        <div>
-          <h1>700+</h1>
+        <div className={styles.block}>
+          <h1>
+            <div className={styles.odometer} ref={ref}>
+              <div className={styles.digit}>
+                <span>7</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>7</span>
+              </div>
+              <div className={styles.digit}>
+                <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>0</span>
+              </div>
+              <div className={styles.digit}>
+                <span>0</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>0</span>
+              </div>
+            </div>+
+          </h1>
           <p>Secured Wallet</p> 
         </div>
-        <div className={styles.country}>
-          <h1>$1.36 Billion+</h1>
+        <div className={styles.block}>
+          <h1>$
+            <div className={styles.odometer} ref={ref}>
+              <div className={styles.digit}>
+                <span>1.</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>1.</span>
+              </div>
+              <div className={styles.digit}>
+                <span>3</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>3</span>
+              </div>
+              <div className={styles.digit}>
+                <span>6</span><span>1</span><span>2</span><span>3</span><span>4</span>
+                <span>5</span><span>6</span><span>7</span><span>8</span><span>6</span>
+              </div>
+            </div>Billion+
+          </h1>
           <p>Secured Volume</p> 
         </div>
       </div>
@@ -380,6 +455,24 @@ export function Recovery({handleShow}){
 }
 
 export function Faq({handleShow}){
+  const faq = [
+    {
+      questions: "How can I secure my wallet?",
+      answers: ["Set a unique passcode for your wallet.", "Also, make sure the numbers are random. Birthdays, anniversaries, house addresses, and the last digits of your phone number are all popular combinations and are crackable codes to a resourceful criminal."]
+    },
+    {
+      questions: "How to backup a crypto wallet?",
+      answers: ["1. Export Private Keys/Seed Phrase: Go to your wallet's settings and select the “backup wallet” or “export keys” option.", "2. Secure Your Backup: Store backups in multiple secure locations like USB drives, paper copies in fireproof safes, and safety deposit boxes."]
+    },
+    {
+      questions: "How to keep bitcoin wallet safe?",
+      answers: ["Securing Your Bitcoin: Choosing a Reputable Exchange."]
+    },
+    {
+      questions: "How do I trust a safe wallet?",
+      answers: ["Back up your wallet.", "Be cautious of phishing scams."]
+    },
+  ]
   return (
     <section className={styles.faq}>
       <div className={styles.faqhero}>
@@ -400,35 +493,42 @@ export function Faq({handleShow}){
         </div>
       </div>
       <div className={styles.faquest}>
-        <div>
-          <p className={styles.questions}>How can I secure my wallet? <span>{">"}</span></p>
-          <span className={styles.answers}>
-            <p>Set a unique passcode for your wallet.</p>
-            <p>Also, make sure the numbers are random. Birthdays, anniversaries, house addresses, and the last digits of your phone number are all popular combinations and are crackable codes to a resourceful criminal.</p>
-          </span>
-        </div>
-        <div>
-          <p className={styles.questions}>How to backup a crypto wallet?  <span>{">"}</span></p>
-          <span className={styles.answers}>
-            <p>1. Export Private Keys/Seed Phrase: Go to your wallet's settings and select the “backup wallet” or “export keys” option.</p>
-            <p>2. Secure Your Backup: Store backups in multiple secure locations like USB drives, paper copies in fireproof safes, and safety deposit boxes.</p>
-          </span>
-        </div>
-        <div>
-          <p className={styles.questions}>How to keep bitcoin wallet safe?  <span>{">"}</span></p>
-          <span className={styles.answers}>
-            <p>Securing Your Bitcoin: Choosing a Reputable Exchange.</p>
-          </span>
-        </div>
-        <div>
-          <p className={styles.questions}>How do I trust a safe wallet?  <span>{">"}</span></p>
-          <span className={styles.answers}>
-            <p>Back up your wallet.</p>
-            <p>Be cautious of phishing scams.</p>
-          </span>
-        </div>
+        {faq.map((item, i)=>{
+          return(
+            <Ans key={i} item={item}/>
+            // <div key={i}>
+            //   <p className={styles.questions}>{item.questions} <span onClick={handleClick}>{">"}</span></p>
+            //   {show && <span className={styles.answers}>
+            //     {item.answers.map((ans)=>{
+            //       return(
+            //         <p>Set a unique passcode for your wallet.</p>
+            //       )
+            //     })}
+            //   </span>}
+            // </div>
+          )
+        })}
       </div>
     </section>
+  )
+}
+
+export function Ans({item}){
+  const [show, setShow] = useState(false)
+  function handleClick(){
+    setShow(!show)
+  }
+  return(
+    <div>
+      <p className={styles.questions}>{item.questions} {show ? <span onClick={handleClick}>{"<"}</span> : <span onClick={handleClick}>{">"}</span> }</p>
+      {show && <span className={styles.answers}>
+        {item.answers.map((ans, i)=>{
+          return(
+            <p key={i}>{ans}</p>
+          )
+        })}
+      </span>}
+    </div>
   )
 }
 
@@ -445,38 +545,42 @@ export function Trust(){
     {src: "/brands/item-9.png"},
     {src: "/brands/item-10.png"},
   ]
+  const repeated = Array(10).fill(brands).flat();
   return (
     <section className={styles.trust}>
       <h1 className={styles.head}>Trusted By</h1>
-      <div className={styles.marquee1}>
-        {brands.sort()?.map((brand, i)=>{
-          return(
-            <Image
-              src={brand.src}
-              alt="Coin Logo"
-  
-              width={120}
-              height={30}
-              priority
-              key={i}
-            />
-          )
-        })}
+      <div className={styles.marqueewrapper}>
+        <div className={styles.marquee1}>
+          {repeated?.map((brand, i)=>{
+            return(
+              <Image
+                src={brand.src}
+                alt="Coin Logo"
+    
+                width={120}
+                height={30}
+                priority
+                key={i}
+              />
+            )
+          })}
+        </div>
+        <div className={styles.marquee2}>
+          {repeated?.map((brand, i)=>{
+            return(
+              <Image
+                src={brand.src}
+                alt="Coin Logo"
+                width={120}
+                height={30}
+                priority
+                key={i}
+              />
+            )
+          })}
+        </div>
       </div>
-      <div className={styles.marquee2}>
-        {brands.sort()?.map((brand, i)=>{
-          return(
-            <Image
-              src={brand.src}
-              alt="Coin Logo"
-              width={120}
-              height={30}
-              priority
-              key={i}
-            />
-          )
-        })}
-      </div>
+      
     </section>
   )
 }
