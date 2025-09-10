@@ -562,7 +562,7 @@
   padding: 100px 80px 100px 80px;
   display: flex;
   flex-wrap: wrap;
-  background-color: rgb(2, 5, 10);
+  background-color: rgb(7, 16, 32);
   color: #ffffff;
   z-index: 3;
 }
@@ -714,7 +714,7 @@
   padding: 100px 80px 100px 80px;
   display: flex;
   flex-direction: column;
-  background-color: rgb(12, 24, 36);
+  background-color: rgb(7, 16, 32);
   color: #ffffff;
   z-index: 3;
   position: relative;
@@ -992,7 +992,7 @@
   flex-direction: column;
   align-items: center;
   gap: 40px;
-  background-color: rgb(11, 32, 54);
+  background-color: rgb(7, 16, 32);
   color: #ffffff;
   position: relative;
   z-index: 2;
@@ -1338,7 +1338,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgb(0, 27, 56);
+  background-color: rgb(7, 16, 32);
   color: #ffffff;
   position: relative;
 }
