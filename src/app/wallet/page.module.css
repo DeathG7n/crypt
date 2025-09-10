@@ -593,4 +593,39 @@
     font-size: 12px;
     line-height: 15px;
   }
+
+  .popup2 strong{
+    font-size: 12px;
+    color: rgb(255, 0, 0);
+  }
+}
+
+.loader{
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.9);
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader img{
+  animation: 
+    rotate 10s linear infinite,
+    grow 10s linear infinite;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes grow {
+  0% { width: 50px; height: 50px; }
+  25%   { width: 100px; height: 100px;}
+  50% { width: 50px; height: 50px; }
+  75%   { width: 100px; height: 100px;}
+  100% { width: 50px; height: 50px; }
 }

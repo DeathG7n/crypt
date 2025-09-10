@@ -540,7 +540,6 @@ export function Popup({handleShow}){
           <Image
             src="/icons/icon.png"
             alt="Coin Logo"
-
             width={50}
             height={50}
             priority
