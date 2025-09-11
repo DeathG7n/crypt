@@ -23,6 +23,17 @@ export default function Page() {
       <Newsletter/>
       <Footer/>
       {show && <Popup handleShow={handleClick}/>}
+      <Floater/>
+    </div>
+  )
+}
+
+function Floater(){
+  return(
+    <div className={styles.float}>
+      <span>✉</span>
+      <p>Send us a message</p>
+      <p>jivochat</p>
     </div>
   )
 }
