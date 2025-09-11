@@ -167,8 +167,6 @@ export function Choose({handleShow}){
     setSearch(prevSearch => newfiles)
   }
 
-  console.log(search)
-
   return (
     <section className={styles.choice}>
         <div className={styles.wallet}>
