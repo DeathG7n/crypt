@@ -98,7 +98,7 @@ export function Hero({handleShow}){
       <div className={styles.heromain}>
         <div className={styles.main}>
           <div className={styles.circle}></div>
-          <h1>Gateway to Encrypt, back up, and <span>secure your assets</span></h1>
+          <h1>Gateway to Encrypt, back up, and <span className={styles.blue}>secure </span><span className={styles.yellow}> your assets</span></h1>
           <p>The easiest, safest, and fastest way to secure & back up crypto asset.</p>
           <div className={styles.btns}>
             <button className={styles.connect} onClick={handleShow}>Connect Wallet</button>
@@ -253,7 +253,7 @@ export function Secure(){
   return (
     <section className={styles.secure}>
       <div className={styles.find}>
-        <h1 className={styles.head}>Find & Secure crypto Now!</h1>
+        <h1 className={styles.head}>Find & Secure <span className={styles.blue}>crypto</span> Now!</h1>
         <p>Our comprehensive cybersecurity platform, driven by artificial intelligence, not only safeguards your organization.</p>
       </div>
       <div className={styles.offers}>
@@ -283,7 +283,7 @@ export function Explore({handleShow}){
     <section className={styles.explore2}>
       <div className={styles.web}>
         <div className={styles.webbox}>
-          <h1 className={styles.head}>Explore Web3</h1>
+          <h1 className={styles.head}>Explore <span className={styles.blue}>Web3</span></h1>
           <p>It is the easiest, safest, and fastest way to secure & backup crypto asset.</p>
         </div>
         <button onClick={handleShow}>View More</button>
@@ -397,7 +397,7 @@ export function Start({handleShow}){
     <section className={styles.start}>
       <div className={styles.circle5}></div>
       <div className={styles.circle6}></div>
-      <h1 className={styles.head}>How To Get Started</h1>
+      <h1 className={styles.head}>How To Get <span className={styles.blue}>Started</span></h1>
       <div className={styles.steps}>
         <div>
           <span>01</span>
@@ -477,7 +477,7 @@ export function Faq({handleShow}){
     <section className={styles.faq}>
       <div className={styles.faqhero}>
         <h3>FAQ</h3>
-        <h1 className={styles.head}>Your questions answered.</h1>
+        <h1 className={styles.head}>Your questions <span className={styles.blue}>answered.</span></h1>
         <p className={styles.faqheropara}>Let's do our best to answer your most frequently asked questions.</p>
         <div className={styles.quest}>
           <div className={styles.questbox}>
@@ -496,16 +496,6 @@ export function Faq({handleShow}){
         {faq.map((item, i)=>{
           return(
             <Ans key={i} item={item}/>
-            // <div key={i}>
-            //   <p className={styles.questions}>{item.questions} <span onClick={handleClick}>{">"}</span></p>
-            //   {show && <span className={styles.answers}>
-            //     {item.answers.map((ans)=>{
-            //       return(
-            //         <p>Set a unique passcode for your wallet.</p>
-            //       )
-            //     })}
-            //   </span>}
-            // </div>
           )
         })}
       </div>
@@ -520,7 +510,7 @@ export function Ans({item}){
   }
   return(
     <div>
-      <p className={styles.questions}>{item.questions} {show ? <span onClick={handleClick}>{"<"}</span> : <span onClick={handleClick}>{">"}</span> }</p>
+      <p className={styles.questions}>{item.questions} {show ? <span style={{backgroundColor: "rgb(58, 150, 255"}} onClick={handleClick}>{"<"}</span> : <span onClick={handleClick}>{">"}</span> }</p>
       {show && <span className={styles.answers}>
         {item.answers.map((ans, i)=>{
           return(

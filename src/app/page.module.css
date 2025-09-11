@@ -93,7 +93,7 @@
     justify-content: flex-start;
     align-items: center;
     padding: 10px;
-    gap: 10px;
+    gap: 50px;
   }
   .nav h1{
     color: #44c4ff;
@@ -182,7 +182,7 @@
   display: flex;
 }
 .main{
-  width: 50%;
+  width: 50vw;
   height: 450px;
   padding-right: 30px;
   display: flex;
@@ -196,6 +196,15 @@
   margin-bottom: 35px;
   font-weight: 700;
   z-index: 3;
+}
+.blue{
+  color: rgb(58, 150, 255);
+  border-bottom: 3px solid rgb(58, 150, 255);
+}
+
+.yellow{
+  color: gold;
+  border-bottom: 3px solid gold;
 }
 
 .main::-webkit-scrollbar, .main h1::-webkit-scrollbar{
@@ -469,7 +478,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-image: radial-gradient(closest-side, rgba(0, 255, 255, 0.21), rgb(7, 16, 32));
+    background-image: radial-gradient(closest-side, rgba(31, 255, 255, 0.21), rgb(7, 16, 32));
   }
 
   .heromain{
