@@ -270,8 +270,6 @@ async function handleSubmit() {
   }
 }
     
-    
-  }
 
   function handleTypeChange(type){
     setType(type)
