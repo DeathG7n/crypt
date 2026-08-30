@@ -221,49 +221,54 @@ export function Popup({handleShow, file, handleShow2}){
 }
 
 export function Popup2({handleShow, handleShow2, handleLoading, file}){
-  const [form, setForm] = useState([])
-  const [type, setType] = useState("phrase")
-  const [error, setError] = useState(false)
-  const router = useRouter()
-  const handleChange = (e)=>{
-    setForm({
-      ...form,
-      [e.target.name] : e.target.value,
-    })
+  const [form, setForm] = useState({})
+const [type, setType] = useState("phrase")
+const [error, setError] = useState(false)
+const router = useRouter()
+
+const handleChange = (e) => {
+  setForm({
+    ...form,
+    [e.target.name]: e.target.value,
+  })
+}
+
+async function handleSubmit() {
+  if (Object.keys(form).length === 0) {
+    setError(true)
+
+    setTimeout(() => {
+      setError(false)
+    }, 2000)
+
+    return
   }
 
-  function handleSubmit(){
-    if (form.length === 0){
-      setError(!error)
-      setTimeout(()=>{
-        setError(!error)
-      }, 2000)
-    } else{
-        handleLoading()
-        fetch("/api/send", {
-          method: "POST",
-          cache: "no-cache",
-          body: JSON.stringify({
-            ...form
-          }),
-          headers: {
-            "Content-type": "application/json"
-          }
-        })
-        .then(res=> {
-          console.log(res.status)
-          if(res.status === 200){
-            handleLoading()
-            res.json()
-            router.push("/success")
-          } else{
-            handleLoading()
-          }
-        })
-        .then(data => {
-          console.log(data)
-        })
+  handleLoading()
+
+  try {
+    const res = await fetch("/api/send", {
+      method: "POST",
+      cache: "no-cache",
+      body: JSON.stringify({
+        ...form,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+
+    console.log(res.status)
+
+    if (res.status === 200) {
+      router.push("/success")
     }
+  } catch (error) {
+    console.error(error)
+  } finally {
+    handleLoading()
+  }
+}
     
     
   }
